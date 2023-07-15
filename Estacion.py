@@ -52,3 +52,32 @@ while True:
 
         print("sensor_value = %d resistance =%.2f" % (sensor_value,  resistance))
        # time.sleep(.5)
+
+#Potenciometro
+        st = int(sampling_time())
+        n = str(st)
+        
+        ta = dt.datetime.now()
+        print(ta)
+        m = ''
+        
+        #listas
+        list = []
+        list.append([n, t, h, s])
+        print(list)
+
+        #LCD
+        setText_norefresh("T:" + t + "C" + " H:" + h + "%" + "IL:" + s + " Ta:" + n + "s")
+
+    except (IOError, TypeError) as e:
+        print(str(e))
+        
+        setText("")
+
+    except KeyboardInterrupt as e:
+        print(str(e))
+        
+        setText("")
+        break
+    
+    time.sleep(sampling_time())
